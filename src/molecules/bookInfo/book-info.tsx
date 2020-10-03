@@ -48,6 +48,7 @@ const BookInfo: React.FunctionComponent<Props> = ({
             onSaveClick={handleSaveClick}
             value={bookDetails.name}
             canEdit={canEdit}
+            width="89%"
           />
           <div>
             by -{' '}
@@ -56,6 +57,7 @@ const BookInfo: React.FunctionComponent<Props> = ({
               onSaveClick={handleSaveClick}
               value={bookDetails.author}
               canEdit={canEdit}
+              width="75%"
             />
           </div>
           <div>
@@ -65,6 +67,7 @@ const BookInfo: React.FunctionComponent<Props> = ({
               onSaveClick={handleSaveClick}
               value={bookDetails.count}
               canEdit={canEdit}
+              width="34%"
             />
           </div>
         </BookMetaData>
@@ -75,7 +78,13 @@ const BookInfo: React.FunctionComponent<Props> = ({
         </BookActions>
       </BookDetailsContainer>
       <BookDescriptionContainer>
-        {bookDetails.description}
+        <TextField
+          label="description"
+          value={bookDetails.description}
+          onSaveClick={handleSaveClick}
+          canEdit={canEdit}
+          width="100%"
+        />
       </BookDescriptionContainer>
     </BookInfoContainer>
   );

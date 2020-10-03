@@ -5,12 +5,14 @@ type Props = {
   label: string;
   value: string;
   canEdit: boolean;
+  width: string;
   onSaveClick(inputVal: string, label: string): any;
 };
 
 const TextField: React.FunctionComponent<Props> = ({
   label,
   value,
+  width,
   canEdit,
   onSaveClick,
 }: Props) => {
@@ -34,6 +36,7 @@ const TextField: React.FunctionComponent<Props> = ({
     <input
       autoComplete="off"
       name={label}
+      style={{ width, padding: '5px', fontSize: '14px' }}
       value={inputVal}
       onChange={handleInputChange}
     />
