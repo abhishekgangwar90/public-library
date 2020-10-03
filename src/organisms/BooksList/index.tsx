@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getBooksDataAction } from '../../state/actions';
+import { getBooksDataAction, editBookAction } from '../../state/actions';
 import BooksList from './books-list';
 
 const mapStateToProps = ({ bookRecords = {} }: any): any => {
@@ -13,6 +13,7 @@ const mapStateToProps = ({ bookRecords = {} }: any): any => {
 
 const dispatchActions = {
   getBooksDataAction,
+  editBookAction,
 };
 
 export default connect(mapStateToProps, dispatchActions)(BooksList);

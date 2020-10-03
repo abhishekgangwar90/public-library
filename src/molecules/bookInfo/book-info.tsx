@@ -18,7 +18,7 @@ type bookType = {
 
 type Props = {
   bookDetails: any;
-  onBookEdit(data: Array<any>, id: number): any;
+  onBookEdit(data: bookType, id: number): any;
 };
 
 const BookInfo: React.FunctionComponent<Props> = ({
@@ -35,7 +35,7 @@ const BookInfo: React.FunctionComponent<Props> = ({
     const tempData = { ...bookDetails };
     if (tempData[key] !== newVal) {
       const newData = { ...tempData, [key]: newVal };
-      onBookEdit([newData], bookDetails.id);
+      onBookEdit(newData, bookDetails.id);
     }
   };
 

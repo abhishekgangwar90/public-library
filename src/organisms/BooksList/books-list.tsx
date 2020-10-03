@@ -5,6 +5,7 @@ import { booksListType, bookType } from './books-list-types';
 
 const BooksList: React.FunctionComponent<booksListType> = ({
   books,
+  editBookAction,
   getBooksDataAction,
 }: booksListType) => {
   const [booksData, setBooksData] = React.useState<any>([]);
@@ -19,8 +20,10 @@ const BooksList: React.FunctionComponent<booksListType> = ({
     }
   }, [books]);
 
-  const handleBookInfoUpdate = (newData: Array<bookType>, id: number) => {
-    console.log(newData, id);
+  const handleBookInfoUpdate = (newData: bookType, id: number) => {
+    editBookAction({
+      data: newData,
+    });
   };
 
   return (
