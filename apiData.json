@@ -1,3 +1,53 @@
 {
-  "booksRecord": []
+  "booksRecord": [
+    {
+      "id": 1,
+      "name": "Defining India: Through Their Eyes",
+      "author": "Sonia Singh",
+      "description": "",
+      "count": 4
+    },
+    {
+      "id": 2,
+      "name": "Harry Potter and the Philosopher's Stone",
+      "author": "J.K. Rowling",
+      "description": "",
+      "count": 2
+    },
+    {
+      "id": 3,
+      "name": "Rich Dad Poor Dad",
+      "author": "Robert Kiyosaki",
+      "description": "",
+      "count": 3
+    },
+    {
+      "id": 4,
+      "name": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "description": "",
+      "count": 5
+    },
+    {
+      "id": 5,
+      "name": "The Subtle Art of not giving a F*ck",
+      "author": "Mark Manson",
+      "description": "",
+      "count": 8
+    },
+    {
+      "id": 6,
+      "name": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "description": "",
+      "count": 2
+    },
+    {
+      "id": 7,
+      "name": "The Great Gatsby,",
+      "author": "F. Scott Fitzgerald",
+      "description": "",
+      "count": 1
+    }
+  ]
 }
