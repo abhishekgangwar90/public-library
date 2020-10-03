@@ -3,7 +3,7 @@ export type bookInfo = {
   name: string;
   author: string;
   description: string;
-  count: number;
+  count: string;
 };
 
 export type bookAction = {

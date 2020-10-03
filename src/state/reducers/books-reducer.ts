@@ -1,6 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 
-import { GET_BOOKS_DATA, GET_BOOKS_DATA_SUCCESS } from '../constants';
+import {
+  GET_BOOKS_DATA,
+  GET_BOOKS_DATA_SUCCESS,
+  GET_BOOKS_DATA_FAILURE,
+} from '../constants';
 import { bookState, bookAction } from '../types';
 
 const initialState = {
@@ -22,10 +26,20 @@ export const booksReducer = (
     }
 
     case GET_BOOKS_DATA_SUCCESS: {
+      const { data } = payload;
       return {
         ...state,
         isLoading: false,
-        books: payload,
+        books: data,
+      };
+    }
+
+    case GET_BOOKS_DATA_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        books: [],
+        error: payload.error,
       };
     }
 
