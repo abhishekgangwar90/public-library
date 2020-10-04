@@ -14,6 +14,7 @@ const BooksList: React.FunctionComponent<booksListType> = ({
   getBooksDataAction,
 }: booksListType) => {
   const [booksData, setBooksData] = React.useState<any>([]);
+  const [searchInput, setSearchInput] = React.useState<string>('');
 
   useEffect(() => {
     getBooksDataAction();
@@ -31,11 +32,36 @@ const BooksList: React.FunctionComponent<booksListType> = ({
     });
   };
 
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { value = '' },
+    } = event;
+    let substrRegex: RegExp;
+
+    setSearchInput(value);
+
+    if (books && books.length > 0) {
+      try {
+        substrRegex = new RegExp(value, 'i');
+        const searchData = [...books].filter((elm) =>
+          substrRegex.test(elm.name)
+        );
+        setBooksData(searchData);
+      } catch (e) {
+        console.log('invalid input');
+      }
+    }
+  };
+
   return (
     <BooksListContainer>
       <BookListHeaderContainer>
         <BookListHeader>List of Available Books</BookListHeader>
-        <SearchField placeholder="Enter a book name to search" />
+        <SearchField
+          value={searchInput}
+          onChange={handleSearch}
+          placeholder="Enter a book name to search"
+        />
       </BookListHeaderContainer>
       {booksData.map((elm: any) => {
         return (

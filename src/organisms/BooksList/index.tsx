@@ -3,7 +3,7 @@ import { getBooksDataAction, editBookAction } from '../../state/actions';
 import BooksList from './books-list';
 
 const mapStateToProps = ({ bookRecords = {} }: any): any => {
-  const { isLoading, books, error } = bookRecords;
+  const { isLoading = false, books = [], error = '' } = bookRecords;
   return {
     isLoading,
     books,
