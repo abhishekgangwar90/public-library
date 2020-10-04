@@ -3,10 +3,27 @@ import useAddNewBookReducer, { initialState } from './add-new-book-reducer';
 import { FormContainer } from './add-new-book-styles';
 
 type Props = {
-  onFormSave(): any;
+  newId: number;
+  onFormSave(bookData: bookDataType): any;
 };
 
-const AddNewBook: React.FunctionComponent<any> = ({ newId, onFormSave }) => {
+type bookDataType = {
+  id: number;
+  name: string;
+  author: string;
+  description: string;
+  count: string;
+};
+
+/**
+ * Add New Book Component
+ * Handles Input from user and returns a callback of bookDataType
+ * @param param0
+ */
+const AddNewBook: React.FunctionComponent<Props> = ({
+  newId,
+  onFormSave,
+}: Props) => {
   const [state, dispatch] = React.useReducer(
     useAddNewBookReducer,
     initialState

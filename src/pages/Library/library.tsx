@@ -5,6 +5,10 @@ import LibraryFooter from '../../atoms/LibraryFooter';
 import { LibraryContainer } from './library-styles';
 import BooksList from '../../organisms/BooksList';
 
+/**
+ * Library Component
+ * Takes care of rendering Library layout
+ */
 const Library: React.FunctionComponent<any> = () => {
   return (
     <LibraryContainer>

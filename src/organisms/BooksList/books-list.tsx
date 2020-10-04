@@ -11,6 +11,13 @@ import { booksListType, bookType } from './books-list-types';
 const AddNewBook = React.lazy(() => import('../../molecules/AddNewBookForm'));
 const BookInfo = React.lazy(() => import('../../molecules/bookInfo'));
 
+/**
+ * Renders BookList, search Book functionality and Add new Functionality
+ * Acts as a container component
+ * Handles all the redux state action
+ * Lazy loads couple of components to improve performance aspects
+ * @param param0
+ */
 const BooksList: React.FunctionComponent<booksListType> = ({
   books,
   editBookAction,
@@ -63,8 +70,6 @@ const BooksList: React.FunctionComponent<booksListType> = ({
   };
 
   const handleSaveNewBookClick = (newBookData: any) => {
-    // const tempData = [];
-    // tempData.push(newBookData);
     setCanShowAddForm(false);
     addBookAction({
       data: newBookData,
@@ -92,7 +97,7 @@ const BooksList: React.FunctionComponent<booksListType> = ({
         {canShowAddForm && (
           <Suspense fallback={<div />}>
             <AddNewBook
-              newId={books && books?.length + 1}
+              newId={(books && books?.length + 1) || 0}
               onFormSave={handleSaveNewBookClick}
             />
           </Suspense>

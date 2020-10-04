@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TextField from '../../atoms/TextField';
 import {
   BookInfoContainer,
@@ -21,6 +21,12 @@ type Props = {
   onBookEdit(data: bookType): any;
 };
 
+/**
+ * BookInfo Component
+ * Renders information about a particular book
+ * handles Edit scenarios and returns a callback on edit with bookType data
+ * @param param0
+ */
 const BookInfo: React.FunctionComponent<Props> = ({
   bookDetails,
   onBookEdit,
