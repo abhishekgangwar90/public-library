@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
+import SearchField from '../../atoms/SearchField';
 import BookInfo from '../../molecules/bookInfo';
-import { BooksListContainer } from './books-list-styles';
+import {
+  BookListHeader,
+  BookListHeaderContainer,
+  BooksListContainer,
+} from './books-list-styles';
 import { booksListType, bookType } from './books-list-types';
 
 const BooksList: React.FunctionComponent<booksListType> = ({
@@ -28,7 +33,10 @@ const BooksList: React.FunctionComponent<booksListType> = ({
 
   return (
     <BooksListContainer>
-      <h3>List of Available Books</h3>
+      <BookListHeaderContainer>
+        <BookListHeader>List of Available Books</BookListHeader>
+        <SearchField placeholder="Enter a book name to search" />
+      </BookListHeaderContainer>
       {booksData.map((elm: any) => {
         return (
           <BookInfo

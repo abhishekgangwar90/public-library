@@ -9,3 +9,20 @@ export const BooksListContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const BookListHeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 2%;
+
+  @media only screen and (max-width: 426px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+export const BookListHeader = styled.div`
+  font-weight: bold;
+  flex: 1;
+  margin: 1% 0;
+`;
