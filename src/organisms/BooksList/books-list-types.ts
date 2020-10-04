@@ -4,6 +4,7 @@ export type booksListType = {
   books?: Array<bookInfo>;
   getBooksDataAction?: any;
   editBookAction?: any;
+  addBookAction?: any;
 };
 
 export type bookType = {

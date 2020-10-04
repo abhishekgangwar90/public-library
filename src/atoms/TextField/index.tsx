@@ -28,7 +28,7 @@ const TextField: React.FunctionComponent<Props> = ({
     }
   }, [canEdit]);
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputVal(e.target.value);
   };
 

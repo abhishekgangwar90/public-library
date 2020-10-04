@@ -24,5 +24,12 @@ export const BookListHeaderContainer = styled.div`
 export const BookListHeader = styled.div`
   font-weight: bold;
   flex: 1;
-  margin: 1% 0;
+  margin: 2% 0;
+`;
+
+export const AddBookContainer = styled.div`
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;

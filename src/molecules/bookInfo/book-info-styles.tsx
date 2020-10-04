@@ -6,7 +6,7 @@ export const BookInfoContainer = styled.div`
   flex-direction: column;
   margin: 2% 0;
   border: 1px solid #e6e6e6;
-  box-shadow: 5px 5px 5px 5px #e6e6e6;
+  box-shadow: 5px 5px 30px 5px #bababa;
   padding: 2%;
 `;
 

@@ -1,20 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import SearchField from '../../atoms/SearchField';
-import BookInfo from '../../molecules/bookInfo';
 import {
   BookListHeader,
   BookListHeaderContainer,
   BooksListContainer,
+  AddBookContainer,
 } from './books-list-styles';
 import { booksListType, bookType } from './books-list-types';
+
+const AddNewBook = React.lazy(() => import('../../molecules/AddNewBookForm'));
+const BookInfo = React.lazy(() => import('../../molecules/bookInfo'));
 
 const BooksList: React.FunctionComponent<booksListType> = ({
   books,
   editBookAction,
+  addBookAction,
   getBooksDataAction,
 }: booksListType) => {
   const [booksData, setBooksData] = React.useState<any>([]);
   const [searchInput, setSearchInput] = React.useState<string>('');
+  const [canShowAddForm, setCanShowAddForm] = React.useState<boolean>(false);
 
   useEffect(() => {
     getBooksDataAction();
@@ -26,7 +31,7 @@ const BooksList: React.FunctionComponent<booksListType> = ({
     }
   }, [books]);
 
-  const handleBookInfoUpdate = (newData: bookType, id: number) => {
+  const handleBookInfoUpdate = (newData: bookType) => {
     editBookAction({
       data: newData,
     });
@@ -53,6 +58,19 @@ const BooksList: React.FunctionComponent<booksListType> = ({
     }
   };
 
+  const handleAddClick = () => {
+    setCanShowAddForm(!canShowAddForm);
+  };
+
+  const handleSaveNewBookClick = (newBookData: any) => {
+    // const tempData = [];
+    // tempData.push(newBookData);
+    setCanShowAddForm(false);
+    addBookAction({
+      data: newBookData,
+    });
+  };
+
   return (
     <BooksListContainer>
       <BookListHeaderContainer>
@@ -63,15 +81,34 @@ const BooksList: React.FunctionComponent<booksListType> = ({
           placeholder="Enter a book name to search"
         />
       </BookListHeaderContainer>
-      {booksData.map((elm: any) => {
-        return (
-          <BookInfo
-            key={elm.id}
-            onBookEdit={handleBookInfoUpdate}
-            bookDetails={elm}
-          />
-        );
-      })}
+      <AddBookContainer>
+        <button
+          style={{ fontSize: 'inherit' }}
+          type="button"
+          onClick={handleAddClick}
+        >
+          Add New Book
+        </button>
+        {canShowAddForm && (
+          <Suspense fallback={<div />}>
+            <AddNewBook
+              newId={books && books?.length + 1}
+              onFormSave={handleSaveNewBookClick}
+            />
+          </Suspense>
+        )}
+      </AddBookContainer>
+      <Suspense fallback={<div />}>
+        {booksData.map((elm: any) => {
+          return (
+            <BookInfo
+              key={elm.id}
+              onBookEdit={handleBookInfoUpdate}
+              bookDetails={elm}
+            />
+          );
+        })}
+      </Suspense>
     </BooksListContainer>
   );
 };
