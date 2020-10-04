@@ -87,7 +87,7 @@ const BooksList: React.FunctionComponent<booksListType> = ({
           type="button"
           onClick={handleAddClick}
         >
-          Add New Book
+          {canShowAddForm ? 'Discard' : 'Add New Book'}
         </button>
         {canShowAddForm && (
           <Suspense fallback={<div />}>
